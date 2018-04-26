@@ -53,17 +53,18 @@ var App = function (_React$Component) {
         null,
         React.createElement(
           "form",
-          { onSubmit: function onSubmit(event) {
+          { id: "form", onSubmit: function onSubmit(event) {
               return _this3.onSubmit(event);
             } },
           React.createElement(
             "label",
-            { htmlFor: "searchText" },
-            "Search by user name"
+            { id: "label", htmlFor: "searchText" },
+            "GitHub User Finder"
           ),
           React.createElement("input", {
             type: "text",
             id: "searchText",
+            placeholder: "Search by user name",
             onChange: function onChange(event) {
               return _this3.onChangeHandle(event);
             },
@@ -92,7 +93,7 @@ var UsersList = function (_React$Component2) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
+        { className: "user-list" },
         this.users
       );
     }
@@ -122,11 +123,20 @@ var User = function (_React$Component3) {
     value: function render() {
       return React.createElement(
         "div",
-        null,
-        React.createElement("img", { src: this.props.user.avatar_url, alt: this.props.user.login, style: { maxWidth: "100px" } }),
+        { className: "user" },
+        React.createElement("img", {
+          className: "user-image",
+          src: this.props.user.avatar_url,
+          alt: this.props.user.login,
+          style: { width: "130px" }
+        }),
         React.createElement(
           "a",
-          { href: this.props.user.html_url, target: "_blank" },
+          {
+            className: "user-name",
+            href: this.props.user.html_url,
+            target: "_blank"
+          },
           this.props.user.login
         )
       );

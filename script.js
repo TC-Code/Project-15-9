@@ -23,11 +23,14 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <form onSubmit={event => this.onSubmit(event)}>
-          <label htmlFor="searchText">Search by user name</label>
+        <form id="form" onSubmit={event => this.onSubmit(event)}>
+          <label id="label" htmlFor="searchText">
+            GitHub User Finder
+          </label>
           <input
             type="text"
             id="searchText"
+            placeholder="Search by user name"
             onChange={event => this.onChangeHandle(event)}
             value={this.state.searchText}
           />
@@ -44,16 +47,25 @@ class UsersList extends React.Component {
   }
 
   render() {
-    return <div>{this.users}</div>;
+    return <div className="user-list">{this.users}</div>;
   }
 }
 
 class User extends React.Component {
   render() {
     return (
-      <div>
-        <img src={this.props.user.avatar_url} alt={this.props.user.login} style={{ maxWidth: "100px" }} />
-        <a href={this.props.user.html_url} target="_blank">
+      <div className="user">
+        <img
+          className="user-image"
+          src={this.props.user.avatar_url}
+          alt={this.props.user.login}
+          style={{ width: "130px" }}
+        />
+        <a
+          className="user-name"
+          href={this.props.user.html_url}
+          target="_blank"
+        >
           {this.props.user.login}
         </a>
       </div>
